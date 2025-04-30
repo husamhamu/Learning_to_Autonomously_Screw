@@ -1,70 +1,85 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🔩 AutoScrew – Learning to Autonomously Screw
 
-### `npm start`
+**AutoScrew** ist ein webbasiertes 3D-System in JavaScript und adneren Techologien zur Automatisierung von Schraubvorgängen in der robotergestützten Montage. Durch die Analyse von 3D-Meshes und interaktive Visualisierung erkennt das System automatisch kreisförmige Strukturen (z. B. Schraublöcher) in importierten CAD-Modellen, bestimmt deren Geometrie und unterstützt die autonome Bewegungsplanung eines Roboters. Die gesamte Anwendung wurde vollständig in JavaScript, React und Three.js umgesetzt.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![image](https://github.com/user-attachments/assets/e0fd7a1e-f702-49aa-bed0-3ab5fd4d753e)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+### 🚀 Projektüberblick
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- 🧠 **Ziel:** Automatisierung von Schraubvorgängen durch Analyse von CAD-Modellen (3MF, OBJ, GLB)
+- 🔎 **Funktion:** Erkennung kreisförmiger Geometrien als Bohrlöcher mittels Kantenfilterung und Gruppierung
+- 🛠️ **Technologie:** JavaScript + React + @react-three/fiber + three.js + WebSocket + real-time UI
+- 🤖 **Anwendung:** Autonome Roboterprogrammierung durch Interaktion mit erkannter Geometrie
+- 📊 **Paper:** [AutoScrew: Learning to Autonomously Screw (PDF)](./16_AutoScrew_Learning_to_Autonomously_Screw.pdf)
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 🧠 Technischer Hintergrund (Paper)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+> „… The identified screw holes are translated into target frames … enabling the robotic arm to automatically grasp screws and fasten them …“ – (*AutoScrew Paper*, Abstract)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Kreisdetektion:** Basierend auf Edge-Geometrie-Analyse, siehe [Figure 2 in paper, page 2]
+- **Gruppierung & Validierung:** Gruppierung geschlossener Schleifen (closed loops) → Bewertung ihrer Circularity
+- **Normalenberechnung:** Verwendung von Vektor-Kreuzprodukten zur Bestimmung der Einfügerichtung der Schraube
 
-### `npm run eject`
+![image](https://github.com/user-attachments/assets/ae057bff-2593-4dd4-8b1f-70a6fa618fe6)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 🧩 Architektur & Komponenten
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+/src
+├── AutoScrew.js           # Haupt-Scene-Komponente: lädt Modelle, erkennt Kreise
+├── InteractiveLine.js     # Hervorhebung erkannter Kreise (hover/click)
+├── InteractiveSphere.js   # Interaktive Zentren der Kreise (clickable)
+├── brainwave.js           # Kreis-Erkennung, Gruppierung, Normalen-Berechnung
+├── utils/threeUtils.js    # Mathematische Geometrie-Utilities
+```
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 🎯 Kernfunktionalitäten
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **Mesh-Laden**: Unterstützung für OBJ/3MF/GLB Modelle mit `ThreeMFLoader`, `OBJLoader`
+- **Kantenerkennung**: Extrahieren von `EdgesGeometry` und Filtern durch geometrische Schwellen
+- **Kreisgruppierung**: Clustering von Segmenten zu geschlossenen Loops (siehe `groupCircularEdges`)
+- **Normalenberechnung**: Ermittlung der Einschraubrichtung für Roboterarmsimulationen
+- **UI-Komponenten**: Reaktive Komponenten mit Click-Interaktion (`InteractiveLine`, `InteractiveSphere`)
 
-### Code Splitting
+![image](https://github.com/user-attachments/assets/3b045c28-48ab-43ca-8265-639a1485f802)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+### 📸 Demo (Visualisierung)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+> 🎯 Klicken auf Kreise oder Linien zeigt Kreisparameter in der Konsole  
+> 💡 Interaktive Komponenten zur Validierung und Planung mit Robotern
 
-### Making a Progressive Web App
+![GIF/Demo Screenshot Placeholder](https://your-image-link-if-available.com)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+### 💡 Gelernte Fähigkeiten
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- 🧠 Geometrie-Verarbeitung mit Three.js (Meshes, EdgesGeometry, BufferGeometry)
+- 🎛️ Umsetzung interaktiver WebGL-Komponenten mit @react-three/fiber
+- 🧩 Analyse und Gruppierung geometrischer Features aus 3D-Modellen
+- ⚙️ Eigenständige Entwicklung von Kreisdetektionsalgorithmen
+- 👨‍💻 Umsetzung komplexer Logik mit sauber strukturiertem React-Frontend
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### 📄 Publikation
 
-### `npm run build` fails to minify
+📘 **AutoScrew: Learning to Autonomously Screw**  
+[Link zum Paper ansehen](./16_AutoScrew_Learning_to_Autonomously_Screw.pdf)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
