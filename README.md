@@ -4,6 +4,9 @@
 
 ## 🔩 AutoScrew – Learning to Autonomously Screw
 
+## 🎥 YouTube Video:
+[![Watch the video](https://img.youtube.com/vi/WrsYrJQtBNE/0.jpg)](https://youtu.be/WrsYrJQtBNE)
+
 **AutoScrew** ist ein webbasiertes 3D-System in JavaScript und adneren Techologien zur Automatisierung von Schraubvorgängen in der robotergestützten Montage. Durch die Analyse von 3D-Meshes und interaktive Visualisierung erkennt das System automatisch kreisförmige Strukturen (z. B. Schraublöcher) in importierten CAD-Modellen, bestimmt deren Geometrie und unterstützt die autonome Bewegungsplanung eines Roboters. Die gesamte Anwendung wurde vollständig in JavaScript, React und Three.js umgesetzt.
 
 ![image](https://github.com/user-attachments/assets/e0fd7a1e-f702-49aa-bed0-3ab5fd4d753e)
